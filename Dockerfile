@@ -1,5 +1,6 @@
 FROM golang:latest 
-RUN mkdir /app 
+RUN mkdir /app && useradd -m -u 1000 app && chown app:app /app
+USER 1000
 ADD . /app/ 
 WORKDIR /app 
 RUN go build -o main . 
